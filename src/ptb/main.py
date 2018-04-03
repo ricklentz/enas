@@ -1,9 +1,5 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import os
-import cPickle as pickle
+import pickle
 import shutil
 import sys
 import time
@@ -208,7 +204,7 @@ def get_ops(x_train, x_valid, x_test):
 def train(mode="train"):
   assert mode in ["train", "eval"], "Unknown mode '{0}'".format(mode)
 
-  with open(FLAGS.data_path) as finp:
+  with open(FLAGS.data_path, 'rb' ) as finp:
     x_train, x_valid, x_test, _, _ = pickle.load(finp)
     print("-" * 80)
     print("train_size: {0}".format(np.size(x_train)))
@@ -335,7 +331,7 @@ def train(mode="train"):
                   print(log_string)
 
               print("Here are 10 architectures")
-              for _ in xrange(10):
+              for _ in range(10):
                 arc, rw = sess.run([
                   controller_ops["sample_arc"],
                   controller_ops["reward"],
