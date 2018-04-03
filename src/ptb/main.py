@@ -302,7 +302,7 @@ def train(mode="train"):
                 child_ops["test_reset"],
               ])
               print("Epoch {}: Training controller".format(epoch))
-              for ct_step in xrange(FLAGS.controller_train_steps *
+              for ct_step in range(FLAGS.controller_train_steps *
                                     FLAGS.controller_num_aggregate):
                 run_ops = [
                   controller_ops["loss"],
